@@ -30,8 +30,8 @@ public class SpawnManager : MonoBehaviour
             toSpawn = spawnPool[randomItem];
 
             //offset -3
-            screenX = Random.Range((float)0.0000, (float)(_width - 3.0000-1));
-            screenY = Random.Range((float)0.0000, (float)_height-1);
+            screenX = Random.Range((float)0.0000, _width - 3 - 1);
+            screenY = Random.Range((float)0.0000, _height - 1);
             pos = new Vector2(screenX, screenY);
 
             Instantiate(toSpawn, pos, toSpawn.transform.rotation);
