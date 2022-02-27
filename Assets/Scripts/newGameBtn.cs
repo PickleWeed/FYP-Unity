@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class buttonUI : MonoBehaviour
 {
-    [SerializeField] private string newGame = "TheGame";
+    [SerializeField] private string newGame = "GridEnvironment";
 
    public void newGameBtn()
    {
