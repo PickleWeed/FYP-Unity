@@ -13,7 +13,11 @@ public class GridManager : MonoBehaviour
     //when Start run GenerateGrid
     private void Start()
     {
-        GenerateGrid();
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Left Click is pressed");
+            GenerateGrid();
+        }
     }
 
     void GenerateGrid()
@@ -23,7 +27,7 @@ public class GridManager : MonoBehaviour
             for (int y = 0; y < _height; y++)
             {
                 var spawnedTile = Instantiate(_titlePrefab, new Vector3(x,y), Quaternion.identity);
-                spawnedTile.name = $"Title {x} {y}";
+                spawnedTile.name = $"Tile {x} {y}";
 
                 //even and odd colouring
                 var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);

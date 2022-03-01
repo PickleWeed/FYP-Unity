@@ -15,9 +15,9 @@ public class SpawnManager : MonoBehaviour
     {
         spawnObject();
     }
-
     public void spawnObject()
     {
+        //destroyObject();
         int randomItem = 0;
         GameObject toSpawn;
 
@@ -41,7 +41,7 @@ public class SpawnManager : MonoBehaviour
     }
     private void destroyObject()
     {
-        foreach (GameObject o in GameObject.FindGameObjectsWithTag("Spawnable"))
+        foreach (GameObject o in GameObject.FindGameObjectsWithTag("NPC"))
         {
             Destroy(o);
         }
