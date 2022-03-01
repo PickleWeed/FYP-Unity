@@ -9,6 +9,7 @@ public class ToDestroy : MonoBehaviour
     {
         
     }
+
     public GameObject other;
 
     // Update is called once per frame
