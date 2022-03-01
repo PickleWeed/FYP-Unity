@@ -282,9 +282,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 272761072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50e29f32d13bbaf4e8bdc0be2d2cdc50, type: 3}
+  m_Script: {fileID: 11500000, guid: a17d053aaad52d74eaae3c71546b787e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  other: {fileID: 8351849298255213983, guid: 88a3d2a52d5f35d488b61fc6ba9eaea1, type: 3}
 --- !u!4 &272761074
 Transform:
   m_ObjectHideFlags: 0
@@ -760,7 +761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _width: 16
   _height: 9
-  numberToSpawn: 20
+  numberToSpawn: 5
   spawnPool:
   - {fileID: 2143747040524790506, guid: e736edd51243d774a8af254b28add1b3, type: 3}
 --- !u!4 &2036885755
