@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
+    public static GridManager Instance;
+
     [SerializeField] private int _width, _height;
 
     [SerializeField] private Tile _titlePrefab;
 
     [SerializeField] private Transform _cam;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     //when Start run GenerateGrid
     private void Start()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("Left Click is pressed");
-            GenerateGrid();
-        }
+        //GenerateGrid();
     }
 
-    void GenerateGrid()
+    public void GenerateGrid()
     {
         for (int x = 0; x < _width-3; x++)
         {
@@ -30,11 +33,13 @@ public class GridManager : MonoBehaviour
                 spawnedTile.name = $"Tile {x} {y}";
 
                 //even and odd colouring
-                var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
+                var isOffset = (x + y) % 2 == 1;
                 spawnedTile.Init(isOffset);
             }
         }
         //move camera (offset)
         _cam.transform.position = new Vector3((float)_width / 2 - 3.5f, (float)_height / 2 - 0.5f, -10);
+
+        GameManager.Instance.ChangeState(GameState.SpawnNPC);
     }
 }

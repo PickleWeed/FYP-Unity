@@ -1,19 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
     //[SerializeField] private GameObject npc_civilian;
 
+    public static SpawnManager Instance;
+
     [SerializeField] private float _width, _height;
 
     public int numberToSpawn;
     public List<GameObject> spawnPool;
 
+    public List<ScriptableNPC> _npcs;
+
+    private void Awake()
+    {
+        Instance = this;
+
+        _npcs = Resources.LoadAll<ScriptableNPC>("NPCS").ToList();
+    }
+
     void Start()
     {
-        spawnObject();
+        //spawnObject();
     }
     public void spawnObject()
     {
@@ -34,19 +46,24 @@ public class SpawnManager : MonoBehaviour
             screenY = Random.Range((float)0.0000, _height - 1);
             pos = new Vector2(screenX, screenY);
 
+            //Debug.Log(pos);
+
+            //add collison
             Instantiate(toSpawn, pos, toSpawn.transform.rotation);
             
-            //add collison
+            
+           
         }
+
+        //GameManager.Instance.ChangeState(GameState.SpawnRedNPC);
     }
     private void destroyObject()
     {
-        foreach (GameObject o in GameObject.FindGameObjectsWithTag("NPC"))
+        foreach (GameObject o in GameObject.FindGameObjectsWithTag("GreyNPC"))
         {
             Destroy(o);
         }
     }
-
 }
 
 // to avoid collision 
