@@ -16,11 +16,13 @@ public class SpawnManager : MonoBehaviour
 
     public List<ScriptableNPC> _npcs;
 
+    private float checkRadius = 0.09f;
+
     private void Awake()
     {
         Instance = this;
 
-        _npcs = Resources.LoadAll<ScriptableNPC>("NPCS").ToList();
+       // _npcs = Resources.LoadAll<ScriptableNPC>("NPCS").ToList();
     }
 
     void Start()
@@ -36,34 +38,33 @@ public class SpawnManager : MonoBehaviour
         float screenX, screenY;
         Vector2 pos;
 
-        for (int i=0;i < numberToSpawn; i++)
+        for (int i = 0; i < numberToSpawn; i++)
         {
             randomItem = Random.Range(0, spawnPool.Count);
             toSpawn = spawnPool[randomItem];
 
-            //offset -3
+            //offset -3 to move to the right
             screenX = Random.Range((float)0.0000, _width - 3 - 1);
             screenY = Random.Range((float)0.0000, _height - 1);
             pos = new Vector2(screenX, screenY);
 
-            //Debug.Log(pos);
-
             //add collison
-            Instantiate(toSpawn, pos, toSpawn.transform.rotation);
-            
-            
-           
+            Collider2D Collision = Physics2D.OverlapCircle(pos, checkRadius, LayerMask.GetMask("GreyNPC"));
+            //Debug.Log(Collision);
+            if (Collision == false) {
+                Instantiate(toSpawn, pos, toSpawn.transform.rotation);
+            }
         }
 
         //GameManager.Instance.ChangeState(GameState.SpawnRedNPC);
     }
-    private void destroyObject()
+    /*private void destroyObject()
     {
         foreach (GameObject o in GameObject.FindGameObjectsWithTag("GreyNPC"))
         {
             Destroy(o);
         }
-    }
+    }*/
 }
 
 // to avoid collision 

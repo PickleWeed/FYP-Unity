@@ -8,7 +8,7 @@ public class Tile : MonoBehaviour
     [SerializeField] protected SpriteRenderer _renderer;
     [SerializeField] GameObject _highlight;
 
-    [SerializeField] GameObject greyNPC;
+    //[SerializeField] GameObject greyNPC;
 
     private void Awake()
     {
