@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1367427216991616609}
   - component: {fileID: 5196184327007489432}
   - component: {fileID: 4572398277483604182}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RedNPC
-  m_TagString: Untagged
+  m_TagString: GreyNPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

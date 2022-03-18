@@ -18,6 +18,8 @@ public class SpawnManager : MonoBehaviour
 
     private float checkRadius = 0.09f;
 
+    
+
     private void Awake()
     {
         Instance = this;
@@ -32,16 +34,23 @@ public class SpawnManager : MonoBehaviour
     public void spawnObject()
     {
         //destroyObject();
-        int randomItem = 0;
+        //int randomItem = 0;
         GameObject toSpawn;
 
         float screenX, screenY;
         Vector2 pos;
+        int redNPCSpawnThreshold = numberToSpawn / 10;
 
         for (int i = 0; i < numberToSpawn; i++)
         {
-            randomItem = Random.Range(0, spawnPool.Count);
-            toSpawn = spawnPool[randomItem];
+            //randomItem = Random.Range(0, spawnPool.Count);
+            //toSpawn = spawnPool[randomItem];
+            if (redNPCSpawnThreshold > 0){
+                redNPCSpawnThreshold--;
+                toSpawn = spawnPool[1];
+            }
+            else
+                toSpawn = spawnPool[0];
 
             //offset -3 to move to the right
             screenX = Random.Range((float)0.0000, _width - 3 - 1);
@@ -49,13 +58,11 @@ public class SpawnManager : MonoBehaviour
             pos = new Vector2(screenX, screenY);
 
             //add collison
-            Collider2D Collision = Physics2D.OverlapCircle(pos, checkRadius, LayerMask.GetMask("GreyNPC"));
-            //Debug.Log(Collision);
+            Collider2D Collision = Physics2D.OverlapCircle(pos, checkRadius, LayerMask.GetMask("NPC"));
             if (Collision == false) {
                 Instantiate(toSpawn, pos, toSpawn.transform.rotation);
             }
         }
-
         //GameManager.Instance.ChangeState(GameState.SpawnRedNPC);
     }
     /*private void destroyObject()
